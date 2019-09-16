@@ -1,0 +1,23 @@
+Package: SHollizeckPackage
+Title: Private Function Package
+Version: 0.2.0
+Authors@R: 
+    person(given = "Sebastian",
+           family = "Hollizeck",
+           role = c("aut", "cre"),
+           email = "sebastian.hollizeck@patermac.com",
+           comment = c(ORCID = "https://orcid.org/0000-0002-9504-3497"))
+Description: Contains the functions written during my PhD. Will probably not be useful for anyone else.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.1
+Suggests: 
+    testthat (>= 2.1.0),
+    knitr,
+    rmarkdown
+Imports: 
+    ggplot2,
+    rlang,
+    plotrix
+VignetteBuilder: knitr

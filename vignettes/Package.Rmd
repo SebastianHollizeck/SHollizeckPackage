@@ -1,0 +1,60 @@
+---
+title: "Intro to my package"
+output:
+  rmarkdown::html_vignette:
+    toc: yes
+    #theme: cayman
+    #toc_float: yes
+
+vignette: >
+  %\VignetteIndexEntry{Intro to my package}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(SHollizeckPackage)
+```
+
+# Introduction
+This package contains all of the functions written in R for my PhD. These will be non thematically seperated functions. For an overview of the workflows it is probably smart to look at the markdowns generated for sample analysis.
+
+
+## Colours
+This section has to do with different colors functions
+`make_shades()`, `plot_colours()` and `random_colours()` allows easy acces to standard requests that you have
+
+```{r shades}
+shades <- make_shades("goldenrod", 5)
+```
+this will generate different shades of the color "goldenrod"
+
+which you can then visualize with
+```{r plot, fig.width=7, fig.align="center"}
+plot_colours(shades)
+```
+
+This function however works with any colours that you throw at it, for example 10 random colours from the function
+
+```{r random colors, fig.width=7, fig.align="center"}
+plot_colours(random_colors(10))
+```
+
+Then if you do not like the next to each other visualization, you can use `draw_color_circle()` to view how R will use them with recycling
+
+```{r circle, fig.width=7, fig.height=7, fig.align="center"}
+draw_color_circle(shades,lwd=50)
+```
+
+
+or directly with random colors, which will be returned as well
+```{r circle rand, fig.width=7, fig.height=7, fig.align="center"}
+draw_color_circle(n=5,lwd=50)
+```
