@@ -5,22 +5,29 @@
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 <!-- badges: end -->
 
-The goal of SHollizeckPackage is to ...
+This package contains the agglomeration of R functionality I have written for my PhD so far.
+It contains parts for visualisation as well as pure data crunching, so there should be something for everyone.
 
 ## Installation
 
-You can install the released version of SHollizeckPackage from [CRAN](https://CRAN.R-project.org) with:
+You can install the released version of SHollizeckPackage from [GitHub](https://github.com/SebastianHollizeck/SHollizeckPackage) with:
 
 ``` r
-install.packages("SHollizeckPackage")
+# install.packages("devtools")
+devtools::install_github("SebastianHollizeck/SHollizeckPackage")
 ```
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+Plotting lesions sites in a human body
 
 ``` r
 library(SHollizeckPackage)
-## basic example code
+
+mappingXML <- loadXML()
+changePlottingStyle(mappingXML, "right_spook", color="red")
+changePlottingStyle(mappingXML, "left_lower_brain", color="blue")
+changePlottingStyle(mappingXML, "liver", style='stroke', lwd=20, color="darkgreen")
+drawXML(mappingXML)
 ```
 
