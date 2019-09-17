@@ -19,7 +19,19 @@ Suggests:
 Imports: 
     ggplot2,
     rlang,
-    plotrix
+    plotrix,
+    StructuralVariantAnnotation,
+    TxDb.Hsapiens.UCSC.hg19.knownGene,
+    org.Hs.eg.db,
+    BiocGenerics,
+    GenomeInfoDb,
+    GenomicFeatures,
+    VariantAnnotation,
+    biomaRt,
+    data.table,
+    GenomicRanges,
+    XML,
+    grImport
 VignetteBuilder: knitr
 URL: https://github.com/SebastianHollizeck/SHollizeckPackage
 BugReports: https://github.com/SebastianHollizeck/SHollizeckPackage/issues

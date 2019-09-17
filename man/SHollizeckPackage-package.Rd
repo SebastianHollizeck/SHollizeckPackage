@@ -8,6 +8,14 @@
 \description{
 Contains the functions written during my PhD. Will probably not be useful for anyone else.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/SebastianHollizeck/SHollizeckPackage}
+  \item Report bugs at \url{https://github.com/SebastianHollizeck/SHollizeckPackage/issues}
+}
+
+}
 \author{
 \strong{Maintainer}: Sebastian Hollizeck \email{sebastian.hollizeck@patermac.com} (https://orcid.org/0000-0002-9504-3497)
 

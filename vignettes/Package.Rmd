@@ -58,3 +58,34 @@ or directly with random colors, which will be returned as well
 ```{r circle rand, fig.width=7, fig.height=7, fig.align="center"}
 draw_color_circle(n=5,lwd=50)
 ```
+
+## Human region plotting
+Sometimes it is nice to visualize, where a lesion is located in the body. In this case you can just use these functions to generate a high abstraction level plot.
+
+### available sites
+The xml provided allows the selection variety if locations which are predefined by me and common lesion sites.
+```{r organs}
+mappingXML <- loadXML()
+sites <- getAllOrgans(mappingXML)
+sites
+```
+
+### drawing
+Now we can plot this human outline
+```{r draw plain, fig.align="center", fig.width=7}
+drawXML(mappingXML)
+```
+
+But because this is not especially entertaining, we can colour different sites
+
+### changing the colouring
+By adjusting not only the type of drawing (fill or stroke) but also the colouring we can generate an overview of leasion sites easy and efficient
+```{r change style}
+changePlottingStyle(mappingXML, "lung", style = "stroke", color="red")
+changePlottingStyle(mappingXML, "left_lower_brain", color="orange")
+```
+These functions work directly on the object and just return TRUE or FALSE, if they changed something or if the change failed
+Finally we have to plot the object again, like before
+```{r draw colored, fig.align="center", fig.width=7}
+drawXML(mappingXML)
+```
