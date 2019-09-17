@@ -1,5 +1,8 @@
 # SHollizeckPackage 0.3.1
 
+## Structure
+* linked man pages for better readability
+
 # SHollizeckPackage 0.3.0
 
 ## Structure
