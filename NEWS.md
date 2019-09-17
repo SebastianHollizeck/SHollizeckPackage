@@ -1,9 +1,22 @@
+# SHollizeckPackage 0.3.0
+
+## Structure
+* updated vignette
+* added exdata folder to contain external data
+
+## Functionality
+* added a new function: `loadXML`
+* added a new function: `changePlottingStyle`
+* added a new function: `getAllOrgans`
+* added a new function: `drawXML`
+* added a new function: `getStructuralVariants`
+
 # SHollizeckPackage 0.2.0
 
 ## Structure
 * updated vignette
 
-## Fucntionality
+## Functionality
 * Added a new function: `draw_color_circle`
 
 # SHollizeckPackage 0.1.0
