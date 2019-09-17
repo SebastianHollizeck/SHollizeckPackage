@@ -23,5 +23,5 @@ mappingXML <- loadXML()
 
 }
 \seealso{
-[drawXML()] to draw the XML object, [changePlottingStyle()] to change the drawing style of organs
+\code{\link{drawXML}} to draw the XML object and \code{\link{changePlottingStyle}} to change the drawing style of organs
 }

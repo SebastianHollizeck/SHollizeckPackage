@@ -11,10 +11,8 @@
 #' @return TRUE if something got change FALSE otherwise
 #' @export
 #'
-#' @seealso
-#' * \code{\link{loadXML}} to get the object
-#' * \code{\link{getAllOrgans}} to find all available sites
-#' * \code{\link{drawXML}} to draw the xml object
+#' @seealso \code{\link{loadXML}} to get the object, \code{\link{getAllOrgans}}
+#'   to find all available sites and \code{\link{drawXML}} to draw the xml object
 #'
 #' @examples
 #' #changes the left lung to be filled with red color
@@ -101,10 +99,9 @@ changePlottingStyle <- function(mappingXML,organ,style = "fill" ,color="black",l
 #' @return list of all organs to chose from
 #'
 #' @export
-#' @seealso
-#' * [loadXML()] to get the object
-#' * \code{\link{changePlottingStyle}} to change the drawing style
-#' * \code{\link{drawXML}} to draw the xml object
+#'
+#' @seealso \code{\link{loadXML}} to get the object, \code{\link{changePlottingStyle}} to change the drawing style and \code{\link{drawXML}} to draw the xml object
+#'
 #' @examples
 #' #get all sites defaultly available
 #' getAllOrgans(loadXML())
@@ -131,9 +128,10 @@ getAllOrgans <- function(mappingXML){
 #' @param file to be converted into an object
 #'
 #' @return the XML tree object
+#'
 #' @export
 #'
-#' @seealso [drawXML()] to draw the XML object, [changePlottingStyle()] to change the drawing style of organs
+#' @seealso \code{\link{drawXML}} to draw the XML object and \code{\link{changePlottingStyle}} to change the drawing style of organs
 #'
 #' @examples
 #' #loading the internal xml for plotting
@@ -161,9 +159,7 @@ loadXML <- function(file=system.file("extdata", "human_anatomy.ps.xml", package=
 #' @return the object if return is set to \code{TRUE}
 #' @export
 #'
-#' @seealso
-#' * \code{\link{loadXML}} to get the XML object
-#' * \code{\link{changePlottingStyle}} to change the drawing style of organs
+#' @seealso \code{\link{loadXML}} to get the XML object and \code{\link{changePlottingStyle}} to change the drawing style of organs
 #'
 #' @examples
 #' #draw the human anatomy

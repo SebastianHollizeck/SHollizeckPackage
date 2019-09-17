@@ -40,7 +40,6 @@ drawXML(mappingXML)
 
 }
 \seealso{
-* \code{\link{loadXML}} to get the object
-* \code{\link{getAllOrgans}} to find all available sites
-* \code{\link{drawXML}} to draw the xml object
+\code{\link{loadXML}} to get the object, \code{\link{getAllOrgans}}
+  to find all available sites and \code{\link{drawXML}} to draw the xml object
 }
