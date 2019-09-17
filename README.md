@@ -31,3 +31,5 @@ changePlottingStyle(mappingXML, "liver", style='stroke', lwd=20, color="darkgree
 drawXML(mappingXML)
 ```
 
+![lesion site plot](images/anatomyExample.png)
+
