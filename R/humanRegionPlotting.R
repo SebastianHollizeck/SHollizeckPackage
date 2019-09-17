@@ -114,7 +114,7 @@ getAllOrgans <- function(mappingXML){
 #' #loading the internal xml for plotting
 #' mappingXML <- loadXML()
 #'
-loadXML <- function(file=system.file("exdata", "human_anatomy.ps.xml", package="SHollizeckPackage")){
+loadXML <- function(file=system.file("extdata", "human_anatomy.ps.xml", package="SHollizeckPackage")){
   #check if the file exists and exit otheriwse
   if(!file.exists(file)){
     stop("Specified file does not exist ", file)
