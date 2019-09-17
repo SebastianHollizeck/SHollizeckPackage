@@ -24,3 +24,23 @@ TRUE if something got change FALSE otherwise
 \description{
 Change values for plotting
 }
+\examples{
+#changes the left lung to be filled with red color
+mappingXML <- loadXML()
+changePlottingStyle(mappingXML, "left_lung", color="red")
+drawXML(mappingXML)
+
+#reset page
+grid::grid.newpage()
+
+#changes the left lung to be outlined with blue color
+mappingXML <- loadXML()
+changePlottingStyle(mappingXML, "left_lung", color="blue", style='stroke')
+drawXML(mappingXML)
+
+}
+\seealso{
+* \code{\link{loadXML}} to get the object
+* \code{\link{getAllOrgans}} to find all available sites
+* \code{\link{drawXML}} to draw the xml object
+}

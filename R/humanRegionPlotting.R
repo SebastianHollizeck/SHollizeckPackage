@@ -11,9 +11,25 @@
 #' @return TRUE if something got change FALSE otherwise
 #' @export
 #'
-#' @import XML
+#' @seealso
+#' * \code{\link{loadXML}} to get the object
+#' * \code{\link{getAllOrgans}} to find all available sites
+#' * \code{\link{drawXML}} to draw the xml object
 #'
 #' @examples
+#' #changes the left lung to be filled with red color
+#' mappingXML <- loadXML()
+#' changePlottingStyle(mappingXML, "left_lung", color="red")
+#' drawXML(mappingXML)
+#'
+#' #reset page
+#' grid::grid.newpage()
+#'
+#' #changes the left lung to be outlined with blue color
+#' mappingXML <- loadXML()
+#' changePlottingStyle(mappingXML, "left_lung", color="blue", style='stroke')
+#' drawXML(mappingXML)
+#'
 changePlottingStyle <- function(mappingXML,organ,style = "fill" ,color="black",lwd="5"){
 
   availableOrgans <- getAllOrgans(mappingXML)
@@ -73,6 +89,7 @@ changePlottingStyle <- function(mappingXML,organ,style = "fill" ,color="black",l
   }else{
     XML::xmlAttrs(node)["lwd"]<-1
   }
+  return(invisible(TRUE))
 }
 
 #' Get all available organs
@@ -84,8 +101,14 @@ changePlottingStyle <- function(mappingXML,organ,style = "fill" ,color="black",l
 #' @return list of all organs to chose from
 #'
 #' @export
-#'
+#' @seealso
+#' * [loadXML()] to get the object
+#' * \code{\link{changePlottingStyle}} to change the drawing style
+#' * \code{\link{drawXML}} to draw the xml object
 #' @examples
+#' #get all sites defaultly available
+#' getAllOrgans(loadXML())
+#'
 getAllOrgans <- function(mappingXML){
 
   root <- XML::xmlRoot(mappingXML)
@@ -109,6 +132,8 @@ getAllOrgans <- function(mappingXML){
 #'
 #' @return the XML tree object
 #' @export
+#'
+#' @seealso [drawXML()] to draw the XML object, [changePlottingStyle()] to change the drawing style of organs
 #'
 #' @examples
 #' #loading the internal xml for plotting
@@ -136,7 +161,10 @@ loadXML <- function(file=system.file("extdata", "human_anatomy.ps.xml", package=
 #' @return the object if return is set to \code{TRUE}
 #' @export
 #'
-#' @seealso loadXML,changeStyle
+#' @seealso
+#' * \code{\link{loadXML}} to get the XML object
+#' * \code{\link{changePlottingStyle}} to change the drawing style of organs
+#'
 #' @examples
 #' #draw the human anatomy
 #' drawXML(loadXML())

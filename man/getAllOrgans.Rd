@@ -15,3 +15,13 @@ list of all organs to chose from
 \description{
 this extracts the top level ids of each child of the root xml
 }
+\examples{
+#get all sites defaultly available
+getAllOrgans(loadXML())
+
+}
+\seealso{
+* [loadXML()] to get the object
+* \code{\link{changePlottingStyle}} to change the drawing style
+* \code{\link{drawXML}} to draw the xml object
+}

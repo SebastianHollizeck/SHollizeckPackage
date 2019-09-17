@@ -23,5 +23,6 @@ drawXML(loadXML())
 
 }
 \seealso{
-loadXML,changeStyle
+* \code{\link{loadXML}} to get the XML object
+* \code{\link{changePlottingStyle}} to change the drawing style of organs
 }

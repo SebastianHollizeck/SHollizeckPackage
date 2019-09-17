@@ -4,7 +4,7 @@
 \alias{loadXML}
 \title{Create XML object from file}
 \usage{
-loadXML(file = system.file("exdata", "human_anatomy.ps.xml", package =
+loadXML(file = system.file("extdata", "human_anatomy.ps.xml", package =
   "SHollizeckPackage"))
 }
 \arguments{
@@ -21,4 +21,7 @@ can be used for other XMLs as well
 #loading the internal xml for plotting
 mappingXML <- loadXML()
 
+}
+\seealso{
+[drawXML()] to draw the XML object, [changePlottingStyle()] to change the drawing style of organs
 }
