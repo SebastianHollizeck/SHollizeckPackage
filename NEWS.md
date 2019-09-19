@@ -1,3 +1,14 @@
+# SHollizeckPackage 0.4.0
+
+## Structure
+* cleaned up imports in namespace
+
+## Functionality
+* added a new function: `plotSequenzaCellularity`
+* reworked function: `draw_color_circle`
+  - Now draw segments incrementaly
+  - allows more colours to be used
+
 # SHollizeckPackage 0.3.1
 
 ## Structure
