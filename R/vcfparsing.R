@@ -1,5 +1,10 @@
 
+#turn on data.table
+.datatable.aware = TRUE
 
+#allow the use of those variables for data.table
+if (getRversion() >= "2.15.1")
+  utils::globalVariables(c(".", ".I", ".N", ".SD"), utils::packageName())
 
 #' Reads structural variants vcf
 #'
@@ -11,15 +16,9 @@
 #' @param gns which genes to use to annotate
 #' @param biomaRtDB which biomart db to use
 #'
-#' @import BiocGenerics
-#' @import GenomeInfoDb
 #' @import TxDb.Hsapiens.UCSC.hg19.knownGene
 #' @import org.Hs.eg.db
-#' @import GenomicFeatures
-#'
-#' @import biomaRt
-#' @rawNamespace import(data.table, except = "shift")
-#' @import GenomicRanges
+#' @importFrom data.table ":="
 #'
 #' @return data.table with annotated structural variants
 #' @export
@@ -34,10 +33,10 @@ getStructuralVariants <- function(file, minlength=10000,chrs=c(1:22, "X", "Y"),g
   sv_gr <- StructuralVariantAnnotation::breakpointRanges(sv_vcf)
 
   #remove small variants on the same chromosome
-  sv_gr <- sv_gr[seqnames(sv_gr) != seqnames(partner(sv_gr)) | abs(start(sv_gr) - start(StructuralVariantAnnotation::partner(sv_gr))) > minlength]
+  sv_gr <- sv_gr[GenomeInfoDb::seqnames(sv_gr) != GenomeInfoDb::seqnames(StructuralVariantAnnotation::partner(sv_gr)) | abs(BiocGenerics::start(sv_gr) - BiocGenerics::start(StructuralVariantAnnotation::partner(sv_gr))) > minlength]
 
   #for biomarot we need the chr in the front
-  seqlevelsStyle(sv_gr) <- "UCSC"
+  GenomeInfoDb::seqlevelsStyle(sv_gr) <- "UCSC"
 
   #check if the supplied chrs already have UCSC style, otherwise add the chr
   if( ! all(grepl("^chr",chrs))){
@@ -45,11 +44,11 @@ getStructuralVariants <- function(file, minlength=10000,chrs=c(1:22, "X", "Y"),g
   }
 
   # remove non canonical variants
-  sv_gr_can <- sv_gr[seqnames(sv_gr) %in% chrs]
+  sv_gr_can <- sv_gr[GenomeInfoDb::seqnames(sv_gr) %in% chrs]
   # now remove entries that had partners there
   sv_gr_can <- sv_gr_can[sv_gr_can$partner %in% names(sv_gr_can)]
 
-  seqlevels(sv_gr_can) <- chrs
+  GenomeInfoDb::seqlevels(sv_gr_can) <- chrs
 
   # if there were no genes supplied, we get our own
   if (missing(gns)){
@@ -74,8 +73,12 @@ getStructuralVariants <- function(file, minlength=10000,chrs=c(1:22, "X", "Y"),g
 
   hits <- data.table::as.data.table(GenomicRanges::findOverlaps(sv_gr_can, gns, ignore.strand=TRUE))
   hits$SYMBOL <- biomaRt::select(biomaRtDB, gns[hits$subjectHits]$gene_id, "SYMBOL")$SYMBOL
-  hits$gene_strand <- as.character(strand(gns[hits$subjectHits]))
+  hits$gene_strand <- as.character(BiocGenerics::strand(gns[hits$subjectHits]))
 
+  #we use this so R CMD does not complain about unset variables
+  SYMBOL <- NULL
+  queryHits <- NULL
+  #now we append all symbols into one line
   hits[,SYMBOL:=paste(.SD$SYMBOL,collapse = ","), by=list(queryHits)]
 
   sv_gr_can$SYMBOL <- NA
@@ -111,7 +114,7 @@ getStructuralVariants <- function(file, minlength=10000,chrs=c(1:22, "X", "Y"),g
   sv_gr_can$depth <- VariantAnnotation::info(sv_vcf[sv_gr_can$sourceId])$BND_DEPTH
 
   # need to convert to dataframe first to keep the rownames
-  sv_dt <- as.data.table(as.data.frame(sv_gr_can),keep.rownames= "ID")
+  sv_dt <- data.table::as.data.table(as.data.frame(sv_gr_can),keep.rownames= "ID")
 
   #self join on the partner to get the info of both break points
   sv_dt_all <- merge(sv_dt,sv_dt,by.x="ID",by.y="partner")

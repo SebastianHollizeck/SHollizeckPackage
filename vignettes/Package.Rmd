@@ -27,7 +27,7 @@ library(SHollizeckPackage)
 This package contains all of the functions written in R for my PhD. These will be non thematically seperated functions. For an overview of the workflows it is probably smart to look at the markdowns generated for sample analysis.
 
 
-## Colours
+# Colours
 This section has to do with different colors functions
 `make_shades()`, `plot_colours()` and `random_colours()` allows easy acces to standard requests that you have
 
@@ -89,3 +89,7 @@ Finally we have to plot the object again, like before
 ```{r draw colored, fig.align="center", fig.width=7}
 drawXML(mappingXML)
 ```
+
+
+# Multi Sample Analysis
+This part discusses multi sample analysis functions and visualisations. Most of them can be used for a single sample as well, but they make more sense in a multi sample case.
