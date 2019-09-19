@@ -129,10 +129,6 @@ draw_color_circle <- function(colors, n, lwd=10){
     warning("Both colors and n was specified, will only use colors")
   }
 
-  if (! missing(n) && n >20){
-    warning("Too many colours will make this not pretty anymore")
-  }
-
   ret <- FALSE
   if(missing(colors) && ! missing(n)){
     colors <- random_colors(n)
@@ -145,11 +141,11 @@ draw_color_circle <- function(colors, n, lwd=10){
 
   graphics::plot(-.5:2.5,-.5:2.5,type='n', axes=F, ylab="", xlab="")
   for(seg  in 1:segments){
-    plotrix::draw.arc(deg1 = (seg-1)*segmentSize, deg2 = seg*segmentSize, lwd=lwd, col = colors[seg])
-  }
+    for(rad in seq(from=0.5,to=1, by=0.01)){
+      plotrix::draw.arc(deg1 = (seg-1)*segmentSize, deg2 = seg*segmentSize, radius=rad, lwd=5, lend=2, col = colors[seg])
+    }
 
-  # we need to draw the first one kinda again, so we do not overlap it from both sides
-  plotrix::draw.arc(deg1 = 0, deg2= .01*segmentSize, lwd=lwd, col=colors[1])
+  }
 
   if(ret){
     return(invisible(colors))
